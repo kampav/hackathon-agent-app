@@ -1,5 +1,8 @@
 # Deploy to GCP Cloud Run
 
+## GitHub Repo
+https://github.com/kampav/hackathon-agent-app
+
 ## 1. One-time setup (do this before hackathon day)
 
 ```powershell
@@ -39,7 +42,13 @@ NEXT_PUBLIC_FEATURE_QR_SHARE=true
 
 ```powershell
 cd C:\Projects\hackathon-agent-app
-gcloud builds submit --config cloudbuild.yaml
+
+# Option A — manual submit (no GitHub trigger needed)
+gcloud builds submit --config cloudbuild.yaml --project hackathon-agent-app
+
+# Option B — set up auto-deploy on git push (one-time, via GCP Console)
+# Go to: https://console.cloud.google.com/cloud-build/triggers?project=hackathon-agent-app
+# Create trigger → GitHub → kampav/hackathon-agent-app → master → cloudbuild.yaml
 ```
 
 ## 4. After deploy
